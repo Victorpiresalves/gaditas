@@ -26,6 +26,9 @@ else
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Aluno.NOME_COMPLETO)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Modalidade.NOME)
                 </th>
                 <th>
@@ -40,20 +43,23 @@ else
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Modalidade.NOME)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DT_CADASTRO)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DT_ATUALIZACAO)
-                    </td>
-                    <td>
-                        <a asp-action="Delete" asp-route-id="@item.ID" asp-controller="ModalidadesAlunos">Deletar</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aluno.NOME_COMPLETO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modalidade.NOME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DT_CADASTRO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DT_ATUALIZACAO)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.ID" asp-controller="ModalidadesAlunos">Deletar</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

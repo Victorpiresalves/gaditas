@@ -18,6 +18,7 @@ namespace Gaditas.Models
         public int NUM_PARCELA { get; set; }
         [Display(Name = "Qtd Total Parcela")]
         public int QTD_TOTAL_PARCELA { get; set; }
+        public bool PAGOU { get; set; }
         [DataType(DataType.Date)]
         [Display(Name = "Data de Vencimento")]
         public DateTime DT_VENCIMENTO { get; set; }
@@ -25,6 +26,8 @@ namespace Gaditas.Models
         public DateTime DT_CADASTRO { get; set; }
         [Display(Name = "Atualizado em")]
         public DateTime? DT_ATUALIZACAO { get; set; }
+        [Display(Name = "Data do Pagamento")]
+        public DateTime? DT_PAGAMENTO { get; set; }
         public virtual AlunoViewModel Aluno { get; set; }
         public virtual PlanoAlunoViewModel PlanoAluno { get; set; }
 

@@ -74,7 +74,8 @@ namespace Gaditas.Controllers
             {
                 await _planoAlunoDAL.Add(_mapper.Map<PlanoAluno>(planoAlunoViewModel));
                 await _planoAlunoDAL.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+              
+                return RedirectToAction("Details", "Alunos", new { id = planoAlunoViewModel.ID_ALUNO, message = "Plano inserida com sucesso!" });
             }
             return View(planoAlunoViewModel);
         }

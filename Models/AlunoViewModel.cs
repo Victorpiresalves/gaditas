@@ -10,7 +10,7 @@ namespace Gaditas.Models
         public new int ID { get; set; }
         [Required]
         [StringLength(150)]
-        [Display(Name = "Nome Completo")]
+        [Display(Name = "Nome do Aluno")]
         public new string NOME_COMPLETO { get; set; }
         [Required]
         [Display(Name = "Data de Nascimento")]

@@ -4,14 +4,16 @@ using GaditasDataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gaditas.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20190102232847_incluindo_dt_pagamento")]
+    partial class incluindo_dt_pagamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,8 +113,6 @@ namespace Gaditas.Migrations
                     b.Property<int>("ID_PLANO_ALUNO");
 
                     b.Property<int>("NUM_PARCELA");
-
-                    b.Property<bool>("PAGOU");
 
                     b.Property<int>("QTD_TOTAL_PARCELA");
 

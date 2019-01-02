@@ -13,9 +13,11 @@ namespace Gaditas.Entities
         public decimal VALOR { get; set; }
         public int NUM_PARCELA { get; set; }
         public int QTD_TOTAL_PARCELA { get; set; }
+        public bool PAGOU { get; set; }
         public DateTime DT_VENCIMENTO { get; set; }
         public DateTime DT_CADASTRO { get; set; }
         public DateTime? DT_ATUALIZACAO { get; set; }
+        public DateTime? DT_PAGAMENTO { get; set; }
         [ForeignKey("ID_ALUNO")]
         public virtual Aluno Aluno { get; set; }
         [ForeignKey("ID_PLANO_ALUNO")]

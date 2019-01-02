@@ -52,9 +52,9 @@ C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\PlanosAlunos\Delete
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\PlanosAlunos\Details.g.cshtml.cs
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\PlanosAlunos\Edit.g.cshtml.cs
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\PlanosAlunos\Index.g.cshtml.cs
-C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Gaditas.csprojAssemblyReference.cache
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Create.g.cshtml.cs
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Delete.g.cshtml.cs
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Details.g.cshtml.cs
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Edit.g.cshtml.cs
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Index.g.cshtml.cs
+C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Gaditas.csprojAssemblyReference.cache
