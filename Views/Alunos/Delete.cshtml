@@ -1,0 +1,56 @@
+@model Gaditas.Models.AlunoViewModel
+
+@{
+    ViewData["Title"] = "Deletar Aluno";
+}
+
+<h1>Deletar Aluno</h1>
+
+<h3>Você deseja excluir esse Aluno?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NOME_COMPLETO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NOME_COMPLETO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_NASCIMENTO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_NASCIMENTO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RG)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RG)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_CADASTRO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_CADASTRO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_ATUALIZACAO)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Deletar" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>

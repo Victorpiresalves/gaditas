@@ -1,0 +1,41 @@
+@model Gaditas.Models.PlanoViewModel
+
+@{
+    ViewData["Title"] = "Novo Plano";
+}
+
+<h1>Plano</h1>
+
+<h4>Novo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NOME" class="control-label"></label>
+                <input asp-for="NOME" class="form-control" />
+                <span asp-validation-for="NOME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VALOR" class="control-label"></label>
+                <input asp-for="VALOR" class="form-control" />
+                <span asp-validation-for="VALOR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QTD_MESES" class="control-label"></label>
+                <input asp-for="QTD_MESES" class="form-control" />
+                <span asp-validation-for="QTD_MESES" class="text-danger"></span>
+            </div>
+  =
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+

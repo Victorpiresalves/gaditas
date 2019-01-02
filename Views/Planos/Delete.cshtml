@@ -1,0 +1,50 @@
+@model Gaditas.Models.PlanoViewModel
+
+@{
+    ViewData["Title"] = "Deletar Plano";
+}
+
+<h1>Deletar Plano</h1>
+
+<h3>Você deseja excluir esse Plano?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NOME)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VALOR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VALOR)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.QTD_MESES)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.QTD_MESES)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_CADASTRO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_CADASTRO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_ATUALIZACAO)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Deletar" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>

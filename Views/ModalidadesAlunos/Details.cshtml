@@ -1,0 +1,41 @@
+@model Gaditas.Models.ModalidadeAlunoViewModel
+
+@{
+    ViewData["Title"] = "Detalhes da Modalidade do Aluno";
+}
+
+<h1>Detalhes da Modalidade do Aluno</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ID_ALUNO)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ID_ALUNO)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ID_MODALIDADE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ID_MODALIDADE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_CADASTRO)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DT_CADASTRO)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DT_ATUALIZACAO)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Voltar</a>
+</div>

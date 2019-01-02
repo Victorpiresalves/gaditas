@@ -1,0 +1,47 @@
+@model Gaditas.Models.PlanoAlunoViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Plano do Aluno";
+}
+<a asp-action="Index">Voltar</a>
+<h1>Detalhes do Plano do Aluno</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Aluno.NOME_COMPLETO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Aluno.NOME_COMPLETO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Plano.NOME)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Plano.NOME)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_INICIO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_INICIO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_CADASTRO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_CADASTRO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_ATUALIZACAO)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>

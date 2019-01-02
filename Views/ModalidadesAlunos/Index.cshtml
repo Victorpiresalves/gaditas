@@ -1,0 +1,60 @@
+@model IEnumerable<Gaditas.Models.ModalidadeAlunoViewModel>
+
+@{
+    ViewData["Title"] = "Modalidade Do Aluno";
+}
+
+@if (ViewData["ID_ALUNO"] != null)
+{
+    <p>
+        <a asp-action="Index" asp-controller="ModalidadesAlunos">Listar Modalidades de todos alunos</a>
+    </p>
+
+    <h1>Modalidades Do Aluno</h1>
+
+    <p>
+        <a asp-action="Create" asp-controller="ModalidadesAlunos" asp-route-id_aluno="@ViewData["ID_ALUNO"]">Incluir Modalidade</a>
+    </p>
+}
+else
+{
+    <h1>Modalidades Dos Alunos</h1>
+}
+@if (@Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modalidade.NOME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DT_CADASTRO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modalidade.NOME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DT_CADASTRO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DT_ATUALIZACAO)
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.ID" asp-controller="ModalidadesAlunos">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

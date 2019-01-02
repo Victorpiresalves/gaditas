@@ -1,0 +1,59 @@
+@model IEnumerable<Gaditas.Models.PlanoViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Planos";
+}
+
+<h1>Lista de Planos</h1>
+
+<p>
+    <a asp-action="Create">Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VALOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QTD_MESES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DT_CADASTRO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VALOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QTD_MESES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DT_CADASTRO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DT_ATUALIZACAO)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

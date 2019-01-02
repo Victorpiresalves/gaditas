@@ -1,0 +1,74 @@
+@model Gaditas.Models.AlunoViewModel
+
+@{
+    ViewData["Title"] = "Editar Aluno";
+}
+
+<h1>Editar</h1>
+
+<h4>Aluno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="NOME_COMPLETO" class="control-label"></label>
+                <input asp-for="NOME_COMPLETO" class="form-control" />
+                <span asp-validation-for="NOME_COMPLETO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DT_NASCIMENTO" class="control-label"></label>
+                <input asp-for="DT_NASCIMENTO" class="form-control" type="date"/>
+                <span asp-validation-for="DT_NASCIMENTO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CPF" class="control-label"></label>
+                <input asp-for="CPF" class="form-control" onkeypress='mascara(this, "###.###.###-##")'/>
+                <span asp-validation-for="CPF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RG" class="control-label"></label>
+                <input asp-for="RG" class="form-control" onkeypress='mascara(this, "##.###.###-#")'/>
+                <span asp-validation-for="RG" class="text-danger"></span>
+            </div>
+       
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+
+<script language="JavaScript">
+ /*
+ A fun��o Mascara tera como valores no argumento os dados inseridos no input (ou no evento onkeypress)
+ onkeypress="mascara(this, '## ####-####')"
+ onkeypress = chama uma fun��o quando uma tecla � pressionada, no exemplo acima, chama a fun��o mascara e define os valores do argumento na fun��o
+ O primeiro valor � o this, � o Apontador/Indicador da Mascara, o '## ####-####' � o modelo / formato da mascara
+ no exemplo acima o # indica os n�meros, e o - (hifen) o caracter que ser� inserido entre os n�meros, ou seja, no exemplo acima o telefone ficara assim: 11-4000-3562
+ para o celular de s�o paulo o modelo dever� ser assim: '## #####-####' [11 98563-1254]
+ para o RG '##.###.###.# [40.123.456.7]
+ para o CPF '###.###.###.##' [789.456.123.10]
+ Ou seja esta mascara tem como objetivo inserir o hifen ou espa�o autom�ticamente quando o usu�rio inserir o n�mero do celular, cpf, rg, etc
+
+ lembrando que o hifen ou qualquer outro caracter � contado tambem, como: 11-4561-6543 temos 10 n�meros e 2 hifens, por isso o valor de maxlength ser� 12
+ <input type="text" name="telefone" onkeypress="mascara(this, '## ####-####')" maxlength="12">
+ neste c�digo n�o � possivel inserir () ou [], apenas . (ponto), - (hif�n) ou espa�o
+ */
+
+ function mascara(t, mask){
+ var i = t.value.length;
+ var saida = mask.substring(1,0);
+ var texto = mask.substring(i)
+ if (texto.substring(0,1) != saida){
+ t.value += texto.substring(0,1);
+ }
+ }
+</script>

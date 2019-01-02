@@ -1,0 +1,62 @@
+@model IEnumerable<Gaditas.Models.PagamentoViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Pagamentos";
+}
+
+<h1>Lista de Pagamentos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VALOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NUM_PARCELA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QTD_TOTAL_PARCELA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DT_VENCIMENTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DT_CADASTRO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VALOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NUM_PARCELA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QTD_TOTAL_PARCELA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DT_VENCIMENTO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DT_CADASTRO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DT_ATUALIZACAO)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

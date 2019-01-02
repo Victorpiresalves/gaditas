@@ -1,0 +1,83 @@
+@model Gaditas.Models.AlunoViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Aluno";
+}
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+<h1>Detalhes do Aluno</h1>
+<hr />
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="aluno-tab" data-toggle="tab" href="#aluno" role="tab" aria-controls="aluno" aria-selected="true">Aluno</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="modalidades-tab" data-toggle="tab" href="#modalidades" role="tab" aria-controls="modalidades" aria-selected="false">Modalidades</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="planos-tab" data-toggle="tab" href="#planos" role="tab" aria-controls="planos" aria-selected="false">Planos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pagamentos-tab" data-toggle="tab" href="#pagamentos" role="tab" aria-controls="pagamentos" aria-selected="false">Pagamentos</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="aluno" role="tabpanel" aria-labelledby="aluno-tab">
+        <br />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NOME_COMPLETO)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NOME_COMPLETO)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DT_NASCIMENTO)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DT_NASCIMENTO)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CPF)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CPF)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.RG)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.RG)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DT_CADASTRO)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DT_CADASTRO)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DT_ATUALIZACAO)
+            </dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.ID">Editar</a>
+    </div>
+    <div class="tab-pane fade" id="modalidades" role="tabpanel" aria-labelledby="modalidades-tab">
+        <br />
+        <partial name="~/Views/ModalidadesAlunos/Index.cshtml" model="@ViewBag.ModalidadesAluno" view-data="@ViewData"/>
+    </div>
+    <div class="tab-pane fade" id="planos" role="tabpanel" aria-labelledby="planos-tab">
+        <br />
+        <partial name="~/Views/PlanosAlunos/Index.cshtml" model="@ViewBag.PlanosAluno" view-data="@ViewData"/>
+    </div>
+     <div class="tab-pane fade" id="pagamentos" role="tabpanel" aria-labelledby="pagamentos-tab">
+        <br />
+        <partial name="~/Views/Pagamentos/Index.cshtml" model="@ViewBag.PagamentosAluno" view-data="@ViewData"/>
+    </div>
+</div>

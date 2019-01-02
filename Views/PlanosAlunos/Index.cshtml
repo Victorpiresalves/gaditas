@@ -1,0 +1,76 @@
+@model IEnumerable<Gaditas.Models.PlanoAlunoViewModel>
+
+@{
+    ViewData["Title"] = "Planos do Aluno";
+}
+
+@if (ViewData["ID_ALUNO"] != null)
+{
+    <p>
+        <a asp-action="Index" asp-controller="PlanosAlunos">Listar Planos de todos alunos</a>
+    </p>
+
+    <h1>Planos do Aluno</h1>
+
+    <p>
+        <a asp-action="Create" asp-controller="PlanosAlunos" asp-route-id_aluno="@ViewData["ID_ALUNO"]">Incluir Plano</a>
+    </p>
+}
+else
+{
+    <h1>Planos dos Alunos</h1>
+}
+
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aluno.NOME_COMPLETO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plano.NOME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DT_INICIO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DT_CADASTRO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aluno.NOME_COMPLETO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plano.NOME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DT_INICIO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DT_CADASTRO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DT_ATUALIZACAO)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="PlanosAlunos" asp-route-id="@item.ID">Editar</a> |
+                        <a asp-action="Details" asp-controller="PlanosAlunos" asp-route-id="@item.ID">Detalhes</a> |
+                        <a asp-action="Delete" asp-controller="PlanosAlunos" asp-route-id="@item.ID">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

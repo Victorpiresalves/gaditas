@@ -1,0 +1,47 @@
+@model Gaditas.Models.PlanoViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Plano";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NOME)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VALOR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VALOR)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.QTD_MESES)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.QTD_MESES)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_CADASTRO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_CADASTRO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DT_ATUALIZACAO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DT_ATUALIZACAO)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>
