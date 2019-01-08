@@ -18,6 +18,8 @@ namespace Gaditas.Models
         public int NUM_PARCELA { get; set; }
         [Display(Name = "Qtd Total Parcela")]
         public int QTD_TOTAL_PARCELA { get; set; }
+
+
         public bool PAGOU { get; set; }
         [DataType(DataType.Date)]
         [Display(Name = "Data de Vencimento")]
