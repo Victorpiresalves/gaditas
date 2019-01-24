@@ -10,9 +10,11 @@ namespace Gaditas.DAL
     public class PlanoDAL
     {
         private GenericRepository<Plano> _repository;
+        private AppDataContext _context;
         public PlanoDAL(AppDataContext context)
         {
             _repository = new GenericRepository<Plano>(context);
+            _context = context;
         }
 
 
@@ -47,6 +49,10 @@ namespace Gaditas.DAL
             dbPlano.DT_ATUALIZACAO = DateTime.Now;
 
             _repository.Update(dbPlano);
+        }
+        public Plano ReturnPlanoByNome(string nome)
+        {
+            return _context.Planos.Where(x => x.NOME == nome && !x.DELETADO).FirstOrDefault();
         }
     }
 }

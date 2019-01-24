@@ -47,12 +47,18 @@ namespace Gaditas.Controllers
             {
                 return NotFound();
             }
+            
+            AtributosAlunoViewBag(id);
+            ViewData["ID_ALUNO"] = id;
+            
+            return View(_mapper.Map<AlunoViewModel>(alunoViewModel));
+        }
 
+        public void AtributosAlunoViewBag(int? id)
+        {
             ViewBag.ModalidadesAluno = _mapper.Map<List<ModalidadeAlunoViewModel>>(new ModalidadeAlunoDAL(_context).FindByIdAluno((int)id));
             ViewBag.PlanosAluno = _mapper.Map<List<PlanoAlunoViewModel>>(new PlanoAlunoDAL(_context).FindByIdAluno((int)id));
             ViewBag.PagamentosAluno = _mapper.Map<List<PagamentoViewModel>>(new PagamentoDAL(_context).FindByIdAluno((int)id));
-            ViewData["ID_ALUNO"] = id;
-            return View(_mapper.Map<AlunoViewModel>(alunoViewModel));
         }
 
         // GET: Alunos/Create

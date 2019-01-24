@@ -10,6 +10,7 @@ using GaditasDataContext;
 using AutoMapper;
 using Gaditas.Models;
 using Gaditas.DAL;
+using Gaditas.Validators;
 
 namespace Gaditas.Controllers
 {
@@ -62,7 +63,7 @@ namespace Gaditas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(PlanoViewModel planoViewModel)
         {
-            if (ModelState.IsValid)
+            if (new PlanoValidator(_context, ModelState).CustomValidator(planoViewModel).IsValid)
             {
                 await _planoDAL.Add(_mapper.Map<Plano>(planoViewModel));
                 await _context.SaveChangesAsync();
@@ -99,7 +100,7 @@ namespace Gaditas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (new PlanoValidator(_context, ModelState).CustomValidator(planoViewModel).IsValid)
             {
                 try
                 {
