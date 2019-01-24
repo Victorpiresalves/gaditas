@@ -11,6 +11,7 @@ namespace Gaditas.Entities
         public int ID { get; set; }
         public int ID_ALUNO { get; set; }
         public int ID_PLANO { get; set; }
+        public bool INCLUIR_MATRICULA { get; set; }
         public DateTime DT_INICIO { get; set; }
         public DateTime DT_CADASTRO { get; set; }
         public DateTime? DT_ATUALIZACAO { get; set; }

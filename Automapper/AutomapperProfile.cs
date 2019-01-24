@@ -17,6 +17,8 @@ namespace Gaditas.Automapper
             CreateMap<ModalidadeAluno, ModalidadeAlunoViewModel>().ReverseMap();
             CreateMap<PlanoAluno, PlanoAlunoViewModel>().ReverseMap();
 
+            CreateMap<Pagamento, PagamentoViewModel>().ReverseMap();
+
             //.ReverseMap();
         }
     }

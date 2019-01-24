@@ -4,14 +4,16 @@ using GaditasDataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gaditas.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20190119151207_incluindo_descricao_pagamento")]
+    partial class incluindo_descricao_pagamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,7 +112,7 @@ namespace Gaditas.Migrations
 
                     b.Property<int>("ID_ALUNO");
 
-                    b.Property<int>("ID_PLANO");
+                    b.Property<int>("ID_PLANO_ALUNO");
 
                     b.Property<int>("NUM_PARCELA");
 
@@ -124,7 +126,7 @@ namespace Gaditas.Migrations
 
                     b.HasIndex("ID_ALUNO");
 
-                    b.HasIndex("ID_PLANO");
+                    b.HasIndex("ID_PLANO_ALUNO");
 
                     b.ToTable("Pagamentos");
                 });
@@ -168,8 +170,6 @@ namespace Gaditas.Migrations
 
                     b.Property<int>("ID_PLANO");
 
-                    b.Property<bool>("INCLUIR_MATRICULA");
-
                     b.HasKey("ID");
 
                     b.HasIndex("ID_ALUNO");
@@ -199,9 +199,9 @@ namespace Gaditas.Migrations
                         .HasForeignKey("ID_ALUNO")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Gaditas.Entities.Plano", "Plano")
+                    b.HasOne("Gaditas.Entities.PlanoAluno", "Plano_Aluno")
                         .WithMany()
-                        .HasForeignKey("ID_PLANO")
+                        .HasForeignKey("ID_PLANO_ALUNO")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

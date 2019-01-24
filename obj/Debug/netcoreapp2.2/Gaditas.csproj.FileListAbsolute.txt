@@ -57,4 +57,4 @@ C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Delete.g
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Details.g.cshtml.cs
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Edit.g.cshtml.cs
 C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Razor\Views\Pagamentos\Index.g.cshtml.cs
-C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Gaditas.csprojAssemblyReference.cache
+C:\Projetos\.net\Gaditas\obj\Debug\netcoreapp2.2\Gaditas.csprojResolveAssemblyReference.cache
