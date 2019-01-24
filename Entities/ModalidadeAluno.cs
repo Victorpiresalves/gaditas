@@ -17,5 +17,7 @@ namespace Gaditas.Entities
         public Aluno Aluno { get; set; }
         [ForeignKey("ID_MODALIDADE")]
         public Modalidade Modalidade { get; set; }
+              public bool DELETADO {get;set;}
+         public DateTime? DT_DELETADO { get; set; }
     }
 }

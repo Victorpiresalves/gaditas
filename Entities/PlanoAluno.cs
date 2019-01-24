@@ -19,5 +19,7 @@ namespace Gaditas.Entities
         public Plano Plano { get; set; }    
          [ForeignKey("ID_ALUNO")]
         public Aluno Aluno { get; set; }
+              public bool DELETADO {get;set;}
+         public DateTime? DT_DELETADO { get; set; }
     }
 }

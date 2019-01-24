@@ -15,5 +15,7 @@ namespace Gaditas.Entities
         [Required]
         public DateTime DT_CADASTRO { get; set; }
         public DateTime? DT_ATUALIZACAO { get; set; }
+              public bool DELETADO {get;set;}
+         public DateTime? DT_DELETADO { get; set; }
     }
 }
