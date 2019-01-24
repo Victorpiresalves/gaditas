@@ -10,6 +10,7 @@ using GaditasDataContext;
 using AutoMapper;
 using Gaditas.DAL;
 using Gaditas.Entities;
+using Gaditas.Adapter;
 
 namespace Gaditas.Controllers
 {
@@ -134,6 +135,7 @@ namespace Gaditas.Controllers
             {
                 return NotFound();
             }
+            ViewData["ModalidadesDoAluno"] = new ModalidadesAlunosAdapter(_context).RetornarModalidadesAlunoString((int)id);
 
             var alunoViewModel = await _alunoDAL.FindByIdAsync((int)id);
             if (alunoViewModel == null)

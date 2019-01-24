@@ -25,9 +25,11 @@ namespace Gaditas.Validators
         public ModelStateDictionary CustomValidator(ModalidadeViewModel modalidadeViewModel)
         {
             #region Create
+            var modalidadeByNome = _modalidadeDAL.ReturnModalidadeByNome(modalidadeViewModel.NOME);
+            
             if (modalidadeViewModel.ID == 0)
             {
-                if (_modalidadeDAL.ReturnModalidadeByNome(modalidadeViewModel.NOME) != null)
+                if (modalidadeByNome != null)
                 {
                     _ModelState.AddModelError("NOME", "Já existe uma modalidade com esse nome.");
                 }
@@ -37,7 +39,6 @@ namespace Gaditas.Validators
             #region Edit
             if(modalidadeViewModel.ID != 0)
             {
-                var modalidadeByNome = _modalidadeDAL.ReturnModalidadeByNome(modalidadeViewModel.NOME);
                 if (modalidadeByNome != null && modalidadeByNome.ID != modalidadeViewModel.ID)
                 {
                     _ModelState.AddModelError("NOME", "Já existe uma modalidade com esse nome.");

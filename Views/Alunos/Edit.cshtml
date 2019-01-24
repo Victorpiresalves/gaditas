@@ -40,38 +40,3 @@
         </form>
     </div>
 </div>
-
-<div>
-    <div>
-    <a href "#" id="voltar">Voltar</a>
-</div>
-
-</div>
-
-
-<script language="JavaScript">
- /*
- A fun��o Mascara tera como valores no argumento os dados inseridos no input (ou no evento onkeypress)
- onkeypress="mascara(this, '## ####-####')"
- onkeypress = chama uma fun��o quando uma tecla � pressionada, no exemplo acima, chama a fun��o mascara e define os valores do argumento na fun��o
- O primeiro valor � o this, � o Apontador/Indicador da Mascara, o '## ####-####' � o modelo / formato da mascara
- no exemplo acima o # indica os n�meros, e o - (hifen) o caracter que ser� inserido entre os n�meros, ou seja, no exemplo acima o telefone ficara assim: 11-4000-3562
- para o celular de s�o paulo o modelo dever� ser assim: '## #####-####' [11 98563-1254]
- para o RG '##.###.###.# [40.123.456.7]
- para o CPF '###.###.###.##' [789.456.123.10]
- Ou seja esta mascara tem como objetivo inserir o hifen ou espa�o autom�ticamente quando o usu�rio inserir o n�mero do celular, cpf, rg, etc
-
- lembrando que o hifen ou qualquer outro caracter � contado tambem, como: 11-4561-6543 temos 10 n�meros e 2 hifens, por isso o valor de maxlength ser� 12
- <input type="text" name="telefone" onkeypress="mascara(this, '## ####-####')" maxlength="12">
- neste c�digo n�o � possivel inserir () ou [], apenas . (ponto), - (hif�n) ou espa�o
- */
-
- function mascara(t, mask){
- var i = t.value.length;
- var saida = mask.substring(1,0);
- var texto = mask.substring(i)
- if (texto.substring(0,1) != saida){
- t.value += texto.substring(0,1);
- }
- }
-</script>

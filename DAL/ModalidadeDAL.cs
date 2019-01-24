@@ -52,7 +52,7 @@ namespace Gaditas.DAL
 
         public Modalidade ReturnModalidadeByNome(string nome)
         {
-            return _context.Modalidades.Where(x => x.NOME == nome).FirstOrDefault();
+            return _context.Modalidades.Where(x => x.NOME == nome && !x.DELETADO).FirstOrDefault();
         }
     }
 }
