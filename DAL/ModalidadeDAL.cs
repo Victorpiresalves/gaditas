@@ -19,6 +19,7 @@ namespace Gaditas.DAL
 
 
         public async Task<IEnumerable<Modalidade>> GetAllAsync() => await _repository.GetAllAsync();
+        public List<Modalidade> GetAllAtivo() => _context.Modalidades.Where(x => x.ATIVO).ToList();
         public async Task<Modalidade> FindByIdAsync(int id) => await _repository.FindByIDAsync(id);
         public Modalidade FindById(int id) => _repository.FindByID(id);
         public Modalidade Delete(Modalidade modalidade) => _repository.Delete(modalidade);

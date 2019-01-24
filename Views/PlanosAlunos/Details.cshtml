@@ -3,7 +3,10 @@
 @{
     ViewData["Title"] = "Detalhes do Plano do Aluno";
 }
-<a asp-action="Index">Voltar</a>
+<div>
+    <a href "#" id="voltar">Voltar</a>
+</div>
+
 <h1>Detalhes do Plano do Aluno</h1>
 
 <div>
@@ -43,5 +46,8 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ID">Editar</a> |
-    <a asp-action="Index">Voltar</a>
+    <div>
+    <a href "#" id="voltar">Voltar</a>
+</div>
+
 </div>

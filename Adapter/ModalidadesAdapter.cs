@@ -19,12 +19,12 @@ namespace Gaditas.Adapter
         }
         public List<SelectListItem> GetList(int? id = null)
         {
-            var modalidades = _modalidadeDAL.GetAllAsync();
+            var modalidades = _modalidadeDAL.GetAllAtivo();
             List<SelectListItem> list = new List<SelectListItem>();
 
-            if (modalidades.Result.Count() > 0)
+            if (modalidades.Count() > 0)
             {
-                var result = modalidades.Result.ToList();
+                var result = modalidades.ToList();
                 for (int i = 0; i < result.Count(); i++)
                 {
                     list.Add(new SelectListItem

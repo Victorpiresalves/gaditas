@@ -41,24 +41,27 @@
 </div>
 
 <div>
-    <a asp-action="Index">Voltar</a>
+    <div>
+    <a href "#" id="voltar">Voltar</a>
+</div>
+
 </div>
 
 <script language="JavaScript">
  /*
- A função Mascara tera como valores no argumento os dados inseridos no input (ou no evento onkeypress)
+ A funï¿½ï¿½o Mascara tera como valores no argumento os dados inseridos no input (ou no evento onkeypress)
  onkeypress="mascara(this, '## ####-####')"
- onkeypress = chama uma função quando uma tecla é pressionada, no exemplo acima, chama a função mascara e define os valores do argumento na função
- O primeiro valor é o this, é o Apontador/Indicador da Mascara, o '## ####-####' é o modelo / formato da mascara
- no exemplo acima o # indica os números, e o - (hifen) o caracter que será inserido entre os números, ou seja, no exemplo acima o telefone ficara assim: 11-4000-3562
- para o celular de são paulo o modelo deverá ser assim: '## #####-####' [11 98563-1254]
+ onkeypress = chama uma funï¿½ï¿½o quando uma tecla ï¿½ pressionada, no exemplo acima, chama a funï¿½ï¿½o mascara e define os valores do argumento na funï¿½ï¿½o
+ O primeiro valor ï¿½ o this, ï¿½ o Apontador/Indicador da Mascara, o '## ####-####' ï¿½ o modelo / formato da mascara
+ no exemplo acima o # indica os nï¿½meros, e o - (hifen) o caracter que serï¿½ inserido entre os nï¿½meros, ou seja, no exemplo acima o telefone ficara assim: 11-4000-3562
+ para o celular de sï¿½o paulo o modelo deverï¿½ ser assim: '## #####-####' [11 98563-1254]
  para o RG '##.###.###.# [40.123.456.7]
  para o CPF '###.###.###.##' [789.456.123.10]
- Ou seja esta mascara tem como objetivo inserir o hifen ou espaço automáticamente quando o usuário inserir o número do celular, cpf, rg, etc
+ Ou seja esta mascara tem como objetivo inserir o hifen ou espaï¿½o automï¿½ticamente quando o usuï¿½rio inserir o nï¿½mero do celular, cpf, rg, etc
 
- lembrando que o hifen ou qualquer outro caracter é contado tambem, como: 11-4561-6543 temos 10 números e 2 hifens, por isso o valor de maxlength será 12
+ lembrando que o hifen ou qualquer outro caracter ï¿½ contado tambem, como: 11-4561-6543 temos 10 nï¿½meros e 2 hifens, por isso o valor de maxlength serï¿½ 12
  <input type="text" name="telefone" onkeypress="mascara(this, '## ####-####')" maxlength="12">
- neste código não é possivel inserir () ou [], apenas . (ponto), - (hifén) ou espaço
+ neste cï¿½digo nï¿½o ï¿½ possivel inserir () ou [], apenas . (ponto), - (hifï¿½n) ou espaï¿½o
  */
 
  function mascara(t, mask){
