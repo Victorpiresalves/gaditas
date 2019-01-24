@@ -28,9 +28,9 @@ namespace Gaditas.Controllers
         }
 
         // GET: Modalidades
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var modalidades = await _modalidadeDAL.GetAllAsync();
+            var modalidades = _modalidadeDAL.GetAll();
             return View(_mapper.Map<List<ModalidadeViewModel>>(modalidades));
         }
 

@@ -26,9 +26,9 @@ namespace Gaditas.Controllers
         }
 
         // GET: Planos
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var planos = await _planoDAL.GetAllAsync();
+            var planos = _planoDAL.GetAll();
             return View(_mapper.Map<List<PlanoViewModel>>(planos));
         }
 

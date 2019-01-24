@@ -16,10 +16,16 @@ namespace Gaditas.DAL
         }
 
 
-        public async Task<IEnumerable<Aluno>> GetAllAsync() => await _repository.GetAllAsync();
+        public List<Aluno> GetAll() => _repository.GetAll().Where(x => !x.DELETADO).ToList();
         public async Task<Aluno> FindByIdAsync(int id) => await _repository.FindByIDAsync(id);
         public Aluno FindById(int id) => _repository.FindByID(id);
-        public Aluno Delete(Aluno aluno) => _repository.Delete(aluno);
+        public Aluno Delete(Aluno aluno)
+        {
+            aluno.DELETADO = true;
+            aluno.DT_DELETADO = DateTime.Now;
+
+            return aluno;
+        }
 
         public async Task SaveChangesAsync() => await _repository.SaveChangesAsync();
 

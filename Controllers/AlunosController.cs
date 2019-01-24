@@ -27,9 +27,9 @@ namespace Gaditas.Controllers
         }
 
         // GET: Alunos
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var alunos = await _alunoDAL.GetAllAsync();
+            var alunos = _alunoDAL.GetAll();
             return View(_mapper.Map<List<AlunoViewModel>>(alunos));
         }
 

@@ -24,6 +24,7 @@ namespace Gaditas.DAL
             return _context.Planos_Alunos
                        .Include(blog => blog.Aluno)
                        .Include(aluno => aluno.Plano)
+                       .Where(x => !x.DELETADO)
                    .ToList();
         }
 
@@ -42,8 +43,12 @@ namespace Gaditas.DAL
                         .Include(aluno => aluno.Plano)
                     .Where(x => x.ID_ALUNO == idAluno).ToList();
         }
-        public PlanoAluno Delete(PlanoAluno plano) => _repository.Delete(plano);
+        public PlanoAluno Delete(PlanoAluno plano) {
+            plano.DELETADO = true;
+            plano.DT_DELETADO = DateTime.Now;
 
+            return plano;
+        }
         public async Task SaveChangesAsync() => await _repository.SaveChangesAsync();
 
         public async Task Add(PlanoAluno planoAluno)

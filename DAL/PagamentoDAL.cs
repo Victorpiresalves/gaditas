@@ -24,6 +24,7 @@ namespace Gaditas.DAL
             return _context.Pagamentos
                        .Include(blog => blog.Aluno)
                        .Include(aluno => aluno.Plano)
+                       .Where(x => !x.DELETADO)
                    .ToList();
         }
 
@@ -42,7 +43,13 @@ namespace Gaditas.DAL
                         .Include(aluno => aluno.Plano)
                     .Where(x => x.ID_ALUNO == idAluno).ToList();
         }
-        public Pagamento Delete(Pagamento pagamento) => _repository.Delete(pagamento);
+        public Pagamento Delete(Pagamento pagamento) 
+        {
+            pagamento.DELETADO = true;
+            pagamento.DT_DELETADO = DateTime.Now;
+
+            return pagamento;
+        }
 
         public async Task SaveChangesAsync() => await _repository.SaveChangesAsync();
 

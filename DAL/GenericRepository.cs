@@ -17,7 +17,7 @@ namespace Gaditas.DAL
             _context = context;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public IEnumerable<T> GetAll()
         {
             return _context.Set<T>().ToList();
         }

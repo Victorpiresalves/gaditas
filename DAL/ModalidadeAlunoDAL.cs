@@ -24,6 +24,7 @@ namespace Gaditas.DAL
             return _context.Modalidades_Alunos
                         .Include(blog => blog.Modalidade)
                         .Include(aluno => aluno.Aluno)
+                        .Where(x => !x.DELETADO)
                     .ToList();
         }
 
@@ -43,7 +44,13 @@ namespace Gaditas.DAL
         }
 
 
-        public ModalidadeAluno Delete(ModalidadeAluno modalidadeAluno) => _repository.Delete(modalidadeAluno);
+        public ModalidadeAluno Delete(ModalidadeAluno modalidadeAluno) 
+        {
+            modalidadeAluno.DELETADO = true;
+            modalidadeAluno.DT_DELETADO = DateTime.Now;
+
+            return modalidadeAluno;
+        }
 
         public async Task SaveChangesAsync() => await _repository.SaveChangesAsync();
 

@@ -19,19 +19,18 @@ namespace Gaditas.Adapter
         }
         public List<SelectListItem> GetList(int? id = null)
         {
-            var planos = _planoDAL.GetAllAsync();
+            var planos = _planoDAL.GetAll().ToList();
             List<SelectListItem> list = new List<SelectListItem>();
 
-            if (planos.Result.Count() > 0)
+            if (planos.Count() > 0)
             {
-                var result = planos.Result.ToList();
-                for (int i = 0; i < result.Count(); i++)
+                for (int i = 0; i < planos.Count(); i++)
                 {
                     list.Add(new SelectListItem
                     {
-                        Text = result[i].NOME,
-                        Value = result[i].ID.ToString(),
-                        Selected = id != null && id == result[i].ID ? true : false
+                        Text = planos[i].NOME,
+                        Value = planos[i].ID.ToString(),
+                        Selected = id != null && id == planos[i].ID ? true : false
                     });
                 }
             }

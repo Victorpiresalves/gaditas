@@ -16,10 +16,16 @@ namespace Gaditas.DAL
         }
 
 
-        public async Task<IEnumerable<Plano>> GetAllAsync() => await _repository.GetAllAsync();
+        public IEnumerable<Plano> GetAll() => _repository.GetAll().Where(x => !x.DELETADO).ToList();
         public async Task<Plano> FindByIdAsync(int id) => await _repository.FindByIDAsync(id);
         public Plano FindById(int id) => _repository.FindByID(id);
-        public Plano Delete(Plano plano) => _repository.Delete(plano);
+        public Plano Delete(Plano plano) 
+        {
+            plano.DELETADO = true;
+            plano.DT_DELETADO = DateTime.Now;
+
+            return plano;
+        }
 
         public async Task SaveChangesAsync() => await _repository.SaveChangesAsync();
 
