@@ -8,10 +8,11 @@ using Gaditas.Models;
 
 namespace Gaditas.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {
+            NotifyMessage(Enums.NotifyTypeEnum.info,"isso é um teste");
             return View();
         }
 
