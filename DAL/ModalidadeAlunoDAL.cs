@@ -62,5 +62,10 @@ namespace Gaditas.DAL
 
             _repository.Update(dbModalidadeAluno);
         }
+
+        public ModalidadeAluno ReturnModalidadeAlunoByIdAlunoAndIdModalidade(int idAluno, int idModalidade)
+        {
+            return _context.Modalidades_Alunos.Where(m => m.ID_ALUNO == idAluno && m.ID_MODALIDADE == idModalidade).FirstOrDefault();
+        }
     }
 }

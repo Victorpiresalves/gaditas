@@ -42,7 +42,7 @@ namespace Gaditas.Controllers
 
             var pagamento = await _context.Pagamentos
                 .Include(p => p.Aluno)
-                .Include(p => p.Plano_Aluno)
+                .Include(p => p.Plano)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (pagamento == null)
             {
@@ -74,7 +74,7 @@ namespace Gaditas.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ID_ALUNO"] = new SelectList(_context.Alunos, "ID", "CPF", pagamento.ID_ALUNO);
-            ViewData["ID_PLANO_ALUNO"] = new SelectList(_context.Planos_Alunos, "ID", "ID", pagamento.ID_PLANO_ALUNO);
+            ViewData["ID_PLANO_ALUNO"] = new SelectList(_context.Planos_Alunos, "ID", "ID", pagamento.ID_PLANO);
             return View(pagamento);
         }
 
@@ -92,7 +92,7 @@ namespace Gaditas.Controllers
                 return NotFound();
             }
             ViewData["ID_ALUNO"] = new SelectList(_context.Alunos, "ID", "CPF", pagamento.ID_ALUNO);
-            ViewData["ID_PLANO_ALUNO"] = new SelectList(_context.Planos_Alunos, "ID", "ID", pagamento.ID_PLANO_ALUNO);
+            ViewData["ID_PLANO_ALUNO"] = new SelectList(_context.Planos_Alunos, "ID", "ID", pagamento.ID_PLANO);
             return View(pagamento);
         }
 
@@ -129,7 +129,7 @@ namespace Gaditas.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ID_ALUNO"] = new SelectList(_context.Alunos, "ID", "CPF", pagamento.ID_ALUNO);
-            ViewData["ID_PLANO_ALUNO"] = new SelectList(_context.Planos_Alunos, "ID", "ID", pagamento.ID_PLANO_ALUNO);
+            ViewData["ID_PLANO_ALUNO"] = new SelectList(_context.Planos_Alunos, "ID", "ID", pagamento.ID_PLANO);
             return View(pagamento);
         }
 
@@ -143,7 +143,7 @@ namespace Gaditas.Controllers
 
             var pagamento = await _context.Pagamentos
                 .Include(p => p.Aluno)
-                .Include(p => p.Plano_Aluno)
+                .Include(p => p.Plano)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (pagamento == null)
             {

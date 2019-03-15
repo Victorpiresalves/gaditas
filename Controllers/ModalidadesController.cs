@@ -10,6 +10,7 @@ using GaditasDataContext;
 using AutoMapper;
 using Gaditas.Models;
 using Gaditas.DAL;
+using Gaditas.Validators;
 
 namespace Gaditas.Controllers
 {
@@ -63,7 +64,7 @@ namespace Gaditas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ModalidadeViewModel modalidadeViewModel)
         {
-            if (ModelState.IsValid)
+            if (new ModalidadeValidator(_context, ModelState).CustomValidator(modalidadeViewModel).IsValid)
             {
                 await _modalidadeDAL.Add(_mapper.Map<Modalidade>(modalidadeViewModel));
                 await _modalidadeDAL.SaveChangesAsync();
@@ -100,7 +101,7 @@ namespace Gaditas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (new ModalidadeValidator(_context, ModelState).CustomValidator(modalidadeViewModel).IsValid)
             {
                 try
                 {

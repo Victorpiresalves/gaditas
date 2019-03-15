@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Gaditas.Adapter
 {
-    public class PlanosAdapter
+    public class PlanoAdapter
     {
         private readonly AppDataContext _context;
         private readonly PlanoDAL _planoDAL;
-        public PlanosAdapter(AppDataContext context)
+        public PlanoAdapter(AppDataContext context)
         {
             _context = context;
             _planoDAL = new PlanoDAL(_context);

@@ -23,7 +23,7 @@ namespace Gaditas.DAL
         {
             return _context.Pagamentos
                        .Include(blog => blog.Aluno)
-                       .Include(aluno => aluno.Plano_Aluno)
+                       .Include(aluno => aluno.Plano)
                    .ToList();
         }
 
@@ -32,14 +32,14 @@ namespace Gaditas.DAL
         {
             return _context.Pagamentos
                         .Include(blog => blog.Aluno)
-                        .Include(aluno => aluno.Plano_Aluno)
+                        .Include(aluno => aluno.Plano)
                     .Where(x => x.ID == id).FirstOrDefault();
         }
         public List<Pagamento> FindByIdAluno(int idAluno)
         {
             return _context.Pagamentos
                         .Include(blog => blog.Aluno)
-                        .Include(aluno => aluno.Plano_Aluno)
+                        .Include(aluno => aluno.Plano)
                     .Where(x => x.ID_ALUNO == idAluno).ToList();
         }
         public Pagamento Delete(Pagamento pagamento) => _repository.Delete(pagamento);
@@ -56,10 +56,47 @@ namespace Gaditas.DAL
         public void Update(int id, Pagamento pagamento)
         {
             var dbPagamento = FindById(id);
-            
+
             dbPagamento.DT_ATUALIZACAO = DateTime.Now;
 
             _repository.Update(dbPagamento);
+        }
+
+        public async Task IncluirMensalidades(PlanoAluno planoAluno)
+        {
+            var Plano = new PlanoDAL(_context).FindById(planoAluno.ID_PLANO);
+
+            for (int i = 0; i < Plano.QTD_MESES; i++)
+            {
+                await _repository.AddAsync(new Pagamento
+                {
+                    ID_ALUNO = planoAluno.ID_ALUNO,
+                    ID_PLANO = planoAluno.ID_PLANO,
+                    VALOR = Plano.VALOR / Plano.QTD_MESES,
+                    PAGOU = false,
+                    DESCRICAO = "Mensalidade",
+                    DT_VENCIMENTO = planoAluno.DT_INICIO.AddMonths(i),
+                    NUM_PARCELA = i + 1,
+                    QTD_TOTAL_PARCELA = Plano.QTD_MESES,
+                    DT_CADASTRO = DateTime.Now,
+                });
+            }
+
+            if (planoAluno.INCLUIR_MATRICULA)
+            {
+                await _repository.AddAsync(new Pagamento
+                {
+                    ID_ALUNO = planoAluno.ID_ALUNO,
+                    ID_PLANO = planoAluno.ID_PLANO,
+                    VALOR = Plano.VALOR / Plano.QTD_MESES,
+                    PAGOU = false,
+                    DESCRICAO = "Matricula",
+                    DT_VENCIMENTO = planoAluno.DT_INICIO,
+                    NUM_PARCELA = 1,
+                    QTD_TOTAL_PARCELA = 1,
+                    DT_CADASTRO = DateTime.Now,
+                });
+            }
         }
     }
 }

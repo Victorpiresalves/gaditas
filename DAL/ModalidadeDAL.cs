@@ -10,9 +10,11 @@ namespace Gaditas.DAL
     public class ModalidadeDAL
     {
         private GenericRepository<Modalidade> _repository;
+        private AppDataContext _context;
         public ModalidadeDAL(AppDataContext context)
         {
             _repository = new GenericRepository<Modalidade>(context);
+            _context = context;
         }
 
 
@@ -36,8 +38,14 @@ namespace Gaditas.DAL
             
             dbModalidade.NOME = modalidade.NOME;
             dbModalidade.DT_ATUALIZACAO = DateTime.Now;
+            dbModalidade.ATIVO = modalidade.ATIVO;
 
             _repository.Update(dbModalidade);
+        }
+
+        public Modalidade ReturnModalidadeByNome(string nome)
+        {
+            return _context.Modalidades.Where(x => x.NOME == nome).FirstOrDefault();
         }
     }
 }

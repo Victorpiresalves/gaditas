@@ -46,11 +46,15 @@ namespace Gaditas.DAL
 
         public async Task SaveChangesAsync() => await _repository.SaveChangesAsync();
 
-        public async Task Add(PlanoAluno plano)
+        public async Task Add(PlanoAluno planoAluno)
         {
-            plano.DT_CADASTRO = DateTime.Now;
-            plano.DT_ATUALIZACAO = null;
-            await _repository.AddAsync(plano);
+            planoAluno.DT_CADASTRO = DateTime.Now;
+            planoAluno.DT_ATUALIZACAO = null;
+
+            //Incluir Mensalidades
+            await new PagamentoDAL(_context).IncluirMensalidades(planoAluno);
+
+            await _repository.AddAsync(planoAluno);
         }
 
         public void Update(int id, PlanoAluno plano)

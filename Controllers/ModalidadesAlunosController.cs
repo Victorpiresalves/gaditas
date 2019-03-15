@@ -11,6 +11,7 @@ using AutoMapper;
 using Gaditas.DAL;
 using Gaditas.Entities;
 using Gaditas.Adapter;
+using Gaditas.Validators;
 
 namespace Gaditas.Controllers
 {
@@ -75,7 +76,7 @@ namespace Gaditas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ModalidadeAlunoViewModel modalidadeAlunoViewModel)
         {
-            if (ModelState.IsValid)
+            if (new ModalidadeAlunoValidator(_context, ModelState).CustomValidator(modalidadeAlunoViewModel).IsValid)
             {
                 await _modalidadeAlunoDAL.Add(_mapper.Map<ModalidadeAluno>(modalidadeAlunoViewModel));
                 await _modalidadeAlunoDAL.SaveChangesAsync();
