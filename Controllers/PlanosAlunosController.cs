@@ -57,7 +57,7 @@ namespace Gaditas.Controllers
             {
                 ID_ALUNO = (int)id_aluno,
                 DT_INICIO = DateTime.Now,
-                ListaPlanos = new PlanosAdapter(_context).GetList()
+                ListaPlanos = new PlanoAdapter(_context).GetList()
             };
 
             return View(planoAluno);
