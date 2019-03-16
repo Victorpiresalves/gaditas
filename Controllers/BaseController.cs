@@ -11,7 +11,8 @@ namespace Gaditas.Controllers
     {
         public void NotifyMessage(NotifyTypeEnum notifyTypeMessage, string mensagem)
         {
-            ViewBag.NotifyMessage = "$.notify({message:'" + mensagem + "'},{type:'" + notifyTypeMessage + "', placement:{from: 'top',align: 'left'}});";
+            ViewBag.NotifyMessage += "$.notify({message:'" + mensagem + "'},{type:'" + notifyTypeMessage + "', placement:{from: 'top',align: 'left'}});";
         }
+
     }
 }

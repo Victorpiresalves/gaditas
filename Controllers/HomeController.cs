@@ -12,7 +12,8 @@ namespace Gaditas.Controllers
     {
         public IActionResult Index()
         {
-            NotifyMessage(Enums.NotifyTypeEnum.info,"isso é um teste");
+            NotifyMessage(Enums.NotifyTypeEnum.info, "isso é um teste");
+            NotifyMessage(Enums.NotifyTypeEnum.info, "isso é um teste2");
             return View();
         }
 

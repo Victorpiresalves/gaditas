@@ -1,4 +1,5 @@
-﻿using Gaditas.DAL;
+﻿using Gaditas.Controllers;
+using Gaditas.DAL;
 using Gaditas.Models;
 using GaditasDataContext;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
