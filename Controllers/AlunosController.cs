@@ -10,10 +10,11 @@ using GaditasDataContext;
 using AutoMapper;
 using Gaditas.DAL;
 using Gaditas.Entities;
+using Microsoft.AspNetCore.Cors;
 
 namespace Gaditas.Controllers
 {
-    public class AlunosController : Controller
+    public class AlunosController : BaseController
     {
         private readonly AppDataContext _context;
         private readonly IMapper _mapper;
@@ -44,7 +45,7 @@ namespace Gaditas.Controllers
             var alunoViewModel = await _alunoDAL.FindByIdAsync((int)id);
             if (alunoViewModel == null)
             {
-                return NotFound();
+                return NotFound(); 
             }
 
             ViewBag.ModalidadesAluno = _mapper.Map<List<ModalidadeAlunoViewModel>>(new ModalidadeAlunoDAL(_context).FindByIdAluno((int)id));
@@ -52,6 +53,14 @@ namespace Gaditas.Controllers
             ViewBag.PagamentosAluno = _mapper.Map<List<PagamentoViewModel>>(new PagamentoDAL(_context).FindByIdAluno((int)id));
             ViewData["ID_ALUNO"] = id;
             return View(_mapper.Map<AlunoViewModel>(alunoViewModel));
+        }
+        [EnableCors]
+
+        public async Task<JsonResult> getAlunosAsync()
+        {
+            var alunos = await _alunoDAL.GetAllAsync();
+            var parse = _mapper.Map<List<AlunoViewModel>>(alunos);
+            return Json(parse);
         }
 
         // GET: Alunos/Create

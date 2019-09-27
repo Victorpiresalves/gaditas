@@ -14,5 +14,16 @@ namespace Gaditas.Controllers
             ViewBag.NotifyMessage += "$.notify({message:'" + mensagem + "'},{type:'" + notifyTypeMessage + "', placement:{from: 'top',align: 'left'}});";
         }
 
+        public void AddErrors()
+        {
+            foreach(var d in ViewData.ModelState.Values)
+            {
+                foreach (var error in d.Errors)
+                {
+                    NotifyMessage(NotifyTypeEnum.danger, error.ErrorMessage);
+                }
+            }
+        }
+
     }
 }

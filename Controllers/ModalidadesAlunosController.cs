@@ -15,7 +15,7 @@ using Gaditas.Validators;
 
 namespace Gaditas.Controllers
 {
-    public class ModalidadesAlunosController : Controller
+    public class ModalidadesAlunosController : BaseController
     {
         private readonly AppDataContext _context;
         private readonly IMapper _mapper;
@@ -76,18 +76,23 @@ namespace Gaditas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ModalidadeAlunoViewModel modalidadeAlunoViewModel)
         {
+            //Carregar lista de modalidades
+            modalidadeAlunoViewModel.ListaModalidades = new ModalidadesAdapter(_context).GetList();
+
             if (new ModalidadeAlunoValidator(_context, ModelState).CustomValidator(modalidadeAlunoViewModel).IsValid)
             {
                 await _modalidadeAlunoDAL.Add(_mapper.Map<ModalidadeAluno>(modalidadeAlunoViewModel));
                 await _modalidadeAlunoDAL.SaveChangesAsync();
 
+                NotifyMessage(Enums.NotifyTypeEnum.success, "Modalidade inserida com sucesso!");
                 return RedirectToAction("Details", "Alunos", new { id = modalidadeAlunoViewModel.ID_ALUNO, message = "Modalidade inserida com sucesso!" });
             }
-
+            AddErrors();
+            return View(modalidadeAlunoViewModel);
             //ViewBag.Teste = "teste";
             //return RedirectToAction("Details", "Alunos", new { id = modalidadeAlunoViewModel.ID_ALUNO });
             //return View(modalidadeAlunoViewModel);
-            return RedirectToAction("Details", "Alunos", new { id = modalidadeAlunoViewModel.ID_ALUNO, message = "Nao é possivel inserir uma modalidade já cadastrada." });
+            //return RedirectToAction("Details", "Alunos", new { id = modalidadeAlunoViewModel.ID_ALUNO });
         }
 
         // GET: ModalidadesAlunos/Edit/5

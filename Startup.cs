@@ -43,10 +43,15 @@ namespace Gaditas
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
 
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<AppDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddAutoMapper();
+
+            
         }
+    
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -72,6 +77,12 @@ namespace Gaditas
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseCors(builder => builder
+  .AllowAnyOrigin()
+  .AllowAnyMethod()
+  .AllowAnyHeader()
+  .AllowCredentials());
         }
     }
 }
