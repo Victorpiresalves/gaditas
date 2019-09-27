@@ -76,10 +76,14 @@ namespace Gaditas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AlunoViewModel alunoViewModel)
         {
+            NotifyMessage(Enums.NotifyTypeEnum.success, $"Aluno cadastrado com sucesso!<a href='#'>teste</a>");
+
             if (ModelState.IsValid)
             {
                 await _alunoDAL.Add(_mapper.Map<Aluno>(alunoViewModel));
                 await _alunoDAL.SaveChangesAsync();
+
+                NotifyMessage(Enums.NotifyTypeEnum.success, $"Aluno cadastrado com sucesso!<a href='#'>teste</a>");
                 return RedirectToAction(nameof(Index));
             }
             return View(_mapper.Map<AlunoViewModel>(alunoViewModel));
@@ -118,6 +122,9 @@ namespace Gaditas.Controllers
                 try
                 {
                     _alunoDAL.Update(id,_mapper.Map<Aluno>(alunoViewModel));
+
+                    NotifyMessage(Enums.NotifyTypeEnum.success, "Aluno atualizado com sucesso!");
+
                     await _alunoDAL.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -160,6 +167,10 @@ namespace Gaditas.Controllers
         {
             var alunoViewModel = await _alunoDAL.FindByIdAsync((int)id);
             _alunoDAL.Delete(alunoViewModel);
+
+
+            NotifyMessage(Enums.NotifyTypeEnum.success, "Aluno deletado com sucesso!");
+
             await _alunoDAL.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
