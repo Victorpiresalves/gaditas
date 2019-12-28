@@ -86,14 +86,15 @@ namespace Gaditas.Controllers
                 return NotFound();
             }
 
-            var pagamento = await _context.Pagamentos.FindAsync(id);
+            var pagamento = await _context.Pagamentos.Include(p=>p.Aluno).Include(p=>p.Plano).Where(p=>p.ID == id).FirstOrDefaultAsync();
             if (pagamento == null)
             {
                 return NotFound();
             }
             ViewData["ID_ALUNO"] = new SelectList(_context.Alunos, "ID", "CPF", pagamento.ID_ALUNO);
             ViewData["ID_PLANO_ALUNO"] = new SelectList(_context.Planos_Alunos, "ID", "ID", pagamento.ID_PLANO);
-            return View(pagamento);
+            var x = _mapper.Map<PagamentoViewModel>(pagamento);
+            return View(_mapper.Map<PagamentoViewModel>(pagamento));
         }
 
         // POST: Pagamentos/Edit/5

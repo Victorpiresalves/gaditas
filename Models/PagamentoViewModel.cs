@@ -16,9 +16,9 @@ namespace Gaditas.Models
         public string DESCRICAO { get; set; }
         [Display(Name = "Valor")]
         public decimal VALOR { get; set; }
-        [Display(Name = "Nº Parcela")]
+        [Display(Name = "Parcela")]
         public int NUM_PARCELA { get; set; }
-        [Display(Name = "Qtd Total Parcela")]
+        [Display(Name = "Total Parcela")]
         public int QTD_TOTAL_PARCELA { get; set; }
         public bool PAGOU { get; set; }
         [DataType(DataType.Date)]
